@@ -1,0 +1,122 @@
+body {
+    font-family: Sans-serif;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+}
+
+.erro {
+    color: #F44;
+}
+
+fieldset {
+    border: 3px double #333;
+    color: #000;
+    margin: 10px 0 20px 0;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 0 0;
+}
+
+input[type=text],
+textarea {
+    width: 98%;
+    border: 1px solid #333;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input, textarea {
+    outline: none;
+}
+
+.form-cor:focus {
+    border: 1px solid #5F4BB6;
+}
+
+input[type=submit] {
+    float: right;
+    clear: both;
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    background-color: #5F4BB6;
+    color: #fff;
+}
+
+input[type=submit]:hover {
+    background-color: #4929d8;
+}
+
+input[type="radio"] {
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom radiobutton appearance */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 2px solid #bbbbbb;
+    background-color: #e7e6e7;
+    border-radius: 50%;
+}
+  
+  /* appearance for checked radiobutton */
+input[type="radio"]:checked {
+    background-color: #5F4BB6;
+}
+
+input[type="checkbox"] {
+    /* remove standard background appearance */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* create custom checkbox appearance */
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    padding: 2px;
+    /* background-color only for content */
+    background-clip: content-box;
+    border: 2px solid #bbbbbb;
+    background-color: #e7e6e7;
+    
+}
+  
+input[type="checkbox"]:checked {
+    background-color: #5F4BB6;
+}
+
+
+
+
+table {
+    width: 100%;
+}
+
+table th {
+    background-color: #27F267;
+    font-size: 18px;
+}
+
+table td {
+    border-bottom: 1px solid #333;
+    color: #000;
+}
+
+
+/** Minha personalização */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+}
