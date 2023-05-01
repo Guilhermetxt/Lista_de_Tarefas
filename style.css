@@ -120,3 +120,7 @@ table td {
     max-width: 700px;
     margin: 0 auto;
 }
+
+.prioridade {
+    display: flex;
+}

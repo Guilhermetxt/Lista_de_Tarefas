@@ -1,3 +1,14 @@
+<?php
+
+require_once('banco.php');
+require_once('dao/TarefasDaoMysql.php');
+require_once('ajustes.php');
+
+$tarefasDao = new TarefasDaoMysql($pdo);
+$listaTarefas = $tarefasDao->findByAll();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -13,32 +24,36 @@
 
     <div class="container">
         <h1>Gerenciador de Tarefas</h1>
-            <form>
+            <form action="adicionar.php" method="POST">
                 <fieldset>
                     <legend>Nova Tarefa</legend>
                     <label>
-                        <input class="form-cor" type="text" name="nome" placeholder="Tarefa" autocomplete="false">
+                        <input class="form-cor" type="text" name="nome" placeholder="Tarefa" autocomplete="off">
                     </label>
                     <label>
-                        <textarea class="form-cor" name="descicao" placeholder="Descrição (Opcional):"></textarea>
+                        <textarea class="form-cor" name="descricao" placeholder="Descrição (Opcional):"></textarea>
                     </label>
                     <label>
                         <input class="form-cor" type="text" name="prazo" placeholder="Prazo (Opcional):" autocomplete="off">
                     </label>
-                    <fieldset>
+                    <fieldset class="prioridade">
                         <legend>Prioridade</legend>
-                        <label for="prioridade">
-                            <input type="radio" name="prioridade" id="prioridade" value="baixa" checked>
+                        <label for="baixa">
+                            <input type="radio" name="prioridade" id="baixa" value="1" checked>
                             Baixa
-                            <input type="radio" name="prioridade" id="prioridade" value="media">
-                            Média
-                            <input type="radio" name="prioridade" id="prioridade" value="alta">
-                            Alta
                         </label>
+                        <label for="media">
+                            <input type="radio" name="prioridade" id="media" value="2">
+                                Média
+                        </label>
+                        <label for="alta">
+                            <input type="radio" name="prioridade" id="alta" value="3">
+                                Alta
+                        </label>   
                     </fieldset>
                     <label>
                         Tarefa Concluída:
-                        <input type="checkbox" name="concluida" value="sim">
+                        <input type="checkbox" name="concluida" value="1">
                     </label>
                     <input type="submit" value="Cadastrar">
                 </fieldset>
@@ -47,10 +62,18 @@
         <table>
             <tr>
                 <th>Tarefas</th>
+                <th>Descrição</th>
+                <th>Prazo</th>
+                <th>Prioridade</th>
+                <th>Concluida</th>
             </tr>
-            <?php foreach($lista_tarefas as $tarefa): ?>
+            <?php foreach($listaTarefas as $tarefa): ?>
                 <tr>
-                    <td><?php echo $tarefa; ?></td>
+                    <td><?php echo $tarefa->getNome(); ?></td>
+                    <td><?php echo $tarefa->getDescricao(); ?></td>
+                    <td><?php echo mostra_data($tarefa->getPrazo()); ?></td>
+                    <td><?php echo traduz_prioridade($tarefa->getPrioridade()); ?></td>
+                    <td><?php echo tarefa_concluida($tarefa->getConcluido()); ?></td>
                 </tr>
             <?php endforeach; ?>
         </table>
