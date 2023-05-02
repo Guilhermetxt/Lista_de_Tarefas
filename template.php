@@ -66,6 +66,7 @@ $listaTarefas = $tarefasDao->findByAll();
                 <th>Prazo</th>
                 <th>Prioridade</th>
                 <th>Concluida</th>
+                <th>Opções</th>
             </tr>
             <?php foreach($listaTarefas as $tarefa): ?>
                 <tr>
@@ -74,6 +75,10 @@ $listaTarefas = $tarefasDao->findByAll();
                     <td><?php echo mostra_data($tarefa->getPrazo()); ?></td>
                     <td><?php echo traduz_prioridade($tarefa->getPrioridade()); ?></td>
                     <td><?php echo tarefa_concluida($tarefa->getConcluido()); ?></td>
+                    <td>
+                        <a href="editar.php?id=<?php echo $tarefa->getId(); ?>">Editar</a>
+                        <a href="deletar.php?id=<?php echo $tarefa->getId(); ?>" onclick="return confirm('Confirme para deletar')">Deletar</a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </table>

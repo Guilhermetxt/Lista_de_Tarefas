@@ -73,6 +73,7 @@ class Tarefas
 interface TarefasDAO
 {
     public function findByAll();
+    public function findById($id);
     public function add(Tarefas $t);
     public function delete($id);
     public function edit(Tarefas $t);
