@@ -2,6 +2,7 @@
 
 require_once('dao/TarefasDaoMysql.php');
 require_once('banco.php');
+require_once('ajustes.php');
 
 
 $tarefaDao = new TarefasDaoMysql($pdo);
@@ -48,7 +49,7 @@ if ($tarefa === false) {
                     <textarea class="form-cor" name="descricao" placeholder="Descrição (Opcional):"><?=$tarefa->getDescricao()?></textarea>
                 </label>
                 <label>
-                    <input class="form-cor" type="text" name="prazo" placeholder="Prazo (Opcional):" autocomplete="off" value="<?=$tarefa->getPrazo();?>">
+                    <input class="form-cor" type="text" name="prazo" placeholder="Prazo (Opcional):" autocomplete="off" value="<?=mostra_data($tarefa->getPrazo());?>">
                 </label>
                 <fieldset class="prioridade">
                     <legend>Prioridade</legend>

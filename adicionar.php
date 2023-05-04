@@ -3,6 +3,7 @@
 require_once('models/Tarefas.php');
 require_once('dao/TarefasDaoMysql.php');
 require_once('banco.php');
+require_once('ajustes.php');
 
 
 $tarefaDao = new TarefasDaoMysql($pdo);
@@ -13,11 +14,12 @@ $prazo = filter_input(INPUT_POST, 'prazo');
 $prioridade = filter_input(INPUT_POST, 'prioridade');
 $concluida = filter_input(INPUT_POST, 'concluida');
 
+
 if ($nomeTarefa != '') {
     $t = new Tarefas();
     $t->setNome($nomeTarefa);
     $t->setDescricao($descricao);
-    $t->setPrazo($prazo);
+    $t->setPrazo(traduz_data_para_banco($prazo));
     $t->setPrioridade($prioridade);
     $t->setConcluido($concluida);
 

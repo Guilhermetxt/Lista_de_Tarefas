@@ -2,6 +2,7 @@
 
 require_once('dao/TarefasDaoMysql.php');
 require_once('banco.php');
+require_once('ajustes.php');
 
 
 $id = filter_input(INPUT_POST, 'id');
@@ -20,7 +21,7 @@ if ($id && $nome) {
     $t->setId($id);
     $t->setNome($nome);
     $t->setDescricao($descricao);
-    $t->setPrazo($prazo);
+    $t->setPrazo(traduz_data_para_banco($prazo));
     $t->setPrioridade($prioridade);
     $t->setConcluido($concluida);
 

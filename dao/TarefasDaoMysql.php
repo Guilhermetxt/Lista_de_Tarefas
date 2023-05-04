@@ -1,7 +1,6 @@
 <?php
 
 require_once('models/Tarefas.php');
-require_once('ajustes.php');
 
 
 class TarefasDaoMysql implements TarefasDAO
@@ -66,7 +65,7 @@ class TarefasDaoMysql implements TarefasDAO
         $sql = $this->pdo->prepare("INSERT INTO tarefas (nome, descricao, prazo, prioridade, concluida) VALUES (:nome, :descricao, :prazo, :prioridade, :concluida)");
         $sql->bindValue(':nome', $t->getNome());
         $sql->bindValue(':descricao', $t->getDescricao());
-        $sql->bindValue(':prazo', traduz_data_para_banco($t->getPrazo()));
+        $sql->bindValue(':prazo', $t->getPrazo());
         $sql->bindValue(':prioridade', $t->getPrioridade());
         $sql->bindValue(':concluida', $t->getConcluido());
         $sql->execute();
@@ -86,7 +85,7 @@ class TarefasDaoMysql implements TarefasDAO
         $sql = $this->pdo->prepare("UPDATE tarefas SET nome = :nome, descricao = :descricao, prazo = :prazo, prioridade = :prioridade, concluida = :concluida WHERE id = :id");
         $sql->bindValue(':nome', $t->getNome());
         $sql->bindValue(':descricao', $t->getDescricao());
-        $sql->bindValue(':prazo', traduz_data_para_banco($t->getPrazo()));
+        $sql->bindValue(':prazo', $t->getPrazo());
         $sql->bindValue(':prioridade', $t->getPrioridade());
         $sql->bindValue(':concluida', $t->getConcluido());
         $sql->bindValue(':id', $t->getId());    

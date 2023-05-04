@@ -28,7 +28,7 @@ $listaTarefas = $tarefasDao->findByAll();
                 <fieldset>
                     <legend>Nova Tarefa</legend>
                     <label>
-                        <input class="form-cor" type="text" name="nome" placeholder="Tarefa" autocomplete="off">
+                        <input class="form-cor" type="text" name="nome" placeholder="Tarefa" autocomplete="off" required>
                     </label>
                     <label>
                         <textarea class="form-cor" name="descricao" placeholder="Descrição (Opcional):"></textarea>
@@ -66,7 +66,8 @@ $listaTarefas = $tarefasDao->findByAll();
                 <th>Prazo</th>
                 <th>Prioridade</th>
                 <th>Concluida</th>
-                <th>Opções</th>
+                <th>Editar</th>
+                <th>Deletar</th>
             </tr>
             <?php foreach($listaTarefas as $tarefa): ?>
                 <tr>
@@ -75,9 +76,11 @@ $listaTarefas = $tarefasDao->findByAll();
                     <td><?php echo mostra_data($tarefa->getPrazo()); ?></td>
                     <td><?php echo traduz_prioridade($tarefa->getPrioridade()); ?></td>
                     <td><?php echo tarefa_concluida($tarefa->getConcluido()); ?></td>
-                    <td>
-                        <a href="editar.php?id=<?php echo $tarefa->getId(); ?>">Editar</a>
-                        <a href="deletar.php?id=<?php echo $tarefa->getId(); ?>" onclick="return confirm('Confirme para deletar')">Deletar</a>
+                    <td class="opcao-editar">
+                        <a class="links-opcoes" href="editar.php?id=<?php echo $tarefa->getId(); ?>">Editar</a>
+                    </td>
+                    <td class="opcao-deletar">
+                        <a class="links-opcoes" href="deletar.php?id=<?php echo $tarefa->getId(); ?>" onclick="return confirm('Confirme para deletar')">Deletar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
